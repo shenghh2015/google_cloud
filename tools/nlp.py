@@ -3,6 +3,7 @@ import sys
 import typing
 import pytz
 
+
 def is_none_or_empty(data) -> bool:
   '''This applies to any data type which has a __len__ method'''
   if data is None:
@@ -13,11 +14,13 @@ def is_none_or_empty(data) -> bool:
   except:
     return False
 
+
 def __strdate(timezone: str, now):
   city = timezone.split("/")[-1]
   ts = now.strftime("%Y-%m-%d_%Ih-%Mm-%Ss_%p")
   return f"{city}_{ts}"
-  
+
+
 def get_log_time(utc_time: bool = True, country_city: str = None):
   '''
   utc_time: if False, return local time(server);
@@ -38,6 +41,7 @@ def get_log_time(utc_time: bool = True, country_city: str = None):
   else:
     now = datetime.datetime.now()
     return __strdate("local", now)
+
 
 class Logger:
   '''
@@ -96,6 +100,7 @@ class Logger:
             file=Logger.outstream)
       Logger.outstream.flush()
 
+
 def pydict_file_read(file_name, max_num: int = -1) -> typing.Iterator:
   assert file_name.endswith(".pydict")
   data_num = 0
@@ -115,6 +120,7 @@ def pydict_file_read(file_name, max_num: int = -1) -> typing.Iterator:
         Logger.error(f"reading {file_name}:{idx + 1}: {err} '{ln}'")
 
   Logger.info(f"{file_name}: #data={data_num:,}")
+
 
 def pydict_file_write(data: typing.Iterator, file_name: str, **kwargs) -> None:
   assert file_name.endswith(".pydict")
