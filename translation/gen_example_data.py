@@ -4,6 +4,7 @@ def gen_data(num_data=100):
     result = []
     for i in range(num_data):
         result.append({
+            'id': i,
             'instruction': 'hello',
             'output': 'world'
         }
@@ -11,7 +12,7 @@ def gen_data(num_data=100):
     return result
 
 def main():
-    output_path = '/home/paiinlpteam/data/example_data.pydict'
+    output_path = '/home/shenghh2015/data/example_data.pydict'
     pydict_data = gen_data(400)
     pydict_file_write(pydict_data, output_path)
 
