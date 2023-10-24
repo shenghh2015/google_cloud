@@ -28,10 +28,10 @@ def load_jsonl(data_path):
     return pydict_data
 
 def main():
-    data_path = '/home/shenghh2015/data/long_examples.jsonl'
+    data_path = os.path.expanduser('~/data/long_examples.jsonl')
     pydict_data = load_jsonl(data_path)
 
-    output_dir = '/home/shenghh2015/data'
+    output_dir = os.path.expanduser('~/data')
     os.makedirs(output_dir, exist_ok=True)
     dataset_name = 'long_examples_en'
     uid = 'sft_54'

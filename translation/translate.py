@@ -27,4 +27,9 @@ def translate_text(target: str, text: str) -> dict:
 
     return result
 
-translate_text('zh-CH', 'Hello, world!')
+# translate_text('zh-CH', 'Hello, world!')
+
+# google translation
+def google_translate(text):
+    result = translate_text('zh-CH', text)
+    return result['translatedText']
