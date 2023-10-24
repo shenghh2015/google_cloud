@@ -1,4 +1,4 @@
-from nlp import pydict_file_read
+from tools.nlp import pydict_file_read
 
 class Dataset:
     def __init__(self, data_path, 

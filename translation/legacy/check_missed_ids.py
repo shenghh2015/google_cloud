@@ -1,4 +1,4 @@
-from nlp import pydict_file_read
+from tools.nlp import pydict_file_read
 import os
 import numpy as np
 

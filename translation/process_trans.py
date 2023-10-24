@@ -1,7 +1,7 @@
 from translate import google_translate
 from datasets import Dataset, DataLoader
 from translator import Translator
-from nlp import pydict_file_write
+from tools.nlp import pydict_file_write
 import argparse
 from datetime import date
 import os

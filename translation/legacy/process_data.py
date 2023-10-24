@@ -3,7 +3,7 @@ import multiprocessing
 import json
 from translate import translate_text
 import time
-from nlp import pydict_file_read, pydict_file_write
+from tools.nlp import pydict_file_read, pydict_file_write
 import argparse
 from datetime import date
 import random

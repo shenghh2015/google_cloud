@@ -1,4 +1,4 @@
-from nlp import pydict_file_write
+from tools.nlp import pydict_file_write
 import json
 from datetime import date
 import os

@@ -1,4 +1,4 @@
-from nlp import pydict_file_write
+from tools.nlp import pydict_file_write
 
 def gen_data(num_data=100):
     result = []
