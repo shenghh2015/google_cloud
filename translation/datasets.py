@@ -1,4 +1,4 @@
-from nlp import pydict_file_read, pydict_file_write
+from nlp import pydict_file_read
 
 class Dataset:
     def __init__(self, data_path, 
@@ -11,8 +11,10 @@ class Dataset:
                 known_ids=[]):
         _data = []
         _ids = []
+        _use_clip = False
         if start_id >=0 and end_id > start_id:
             _ids = [i for i in range(start_id, end_id)]
+            _use_clip = True
         elif id_ref_path is not None:
             if id_ref_path.endswith('.npy'):
                 import numpy as np
@@ -22,12 +24,14 @@ class Dataset:
                 _exist_ids = [int(d['id']) for d in _id_pydict_data]
                 print(f'min id {min(_exist_ids)}, max id {max(_exist_ids)}')
                 _ids = [i for i in range(min(_exist_ids), max(_exist_ids) + 1) if not i in _exist_ids]
+            _use_clip = True
         elif known_ids:
             _ids = known_ids
-        if _ids:
-            _data = [d for d in self.data_iter if int(d['id']) in _ids]
+            _use_clip = True
+        if _use_clip:
+            _data = [d for d in data if int(d['id']) in _ids]
         else:
-            _data = [d for d in self.data_iter]
+            _data = [d for d in data]
         return _data
 
 class DataLoader:
