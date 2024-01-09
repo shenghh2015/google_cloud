@@ -17,7 +17,7 @@ def random_split(datalist):
   random.seed(0)
   test_ratio = 0.2
   for d in datalist:
-    d['split'] = 'train' if random.random() >= test_ratio else 'tset'
+    d['split'] = 'train' if random.random() >= test_ratio else 'test'
   return datalist
 
 
