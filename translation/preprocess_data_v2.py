@@ -3,6 +3,7 @@ import json
 from datetime import date
 import os
 import random
+import numpy as np
 
 random.seed(0)
 
@@ -65,11 +66,13 @@ def analyze_translation_cost(data):
 def analyze_data(data):
   train_num = 0
   test_num = 0
+  turns_num = []
   for d in data:
     train_num += d['split'] == 'train'
     test_num += d['split'] == 'test'
+    turns_num.append(len(d['conversations']))
   print(f'train data: {train_num}, test data: {test_num}')
-      
+  print(f'turn statistics: mean {np.mean(turns_num)}, std {np.std(turns_num)}')
 def main():
   data_path = os.path.expanduser('~/data/WizardLM_evol_instruct_V2_143k.json')
   pydict_data = load_json(data_path)
