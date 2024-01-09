@@ -6,8 +6,8 @@ python translation/process_trans.py --input_path $INPUT_PATH \
 --start_id 0 \
 --end_id 9 \
 --id_ref_path None \
---data_uid sft_56 \
---data_name long_examples_en_test \
+--data_uid sft_60_1 \
+--data_name WizardLM_evol_instruct_en \
 
 # run translation for data with id_ref_path
 # python translation/process_trans.py --input_path $INPUT_PATH \
