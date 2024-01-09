@@ -2,9 +2,9 @@
 INPUT_PATH=/home/paiinlpteam/data/data.sft_60.WizardLM_evol_instruct_en.2024-01-09.pydict
 # ID_REF_PATH=
 python translation/process_trans.py --input_path $INPUT_PATH \
---output_dir /tmp/results \
---start_id -1 \
---end_id -1 \
+--output_dir /home/paiinlpteam/results \
+--start_id 0 \
+--end_id 9 \
 --id_ref_path None \
 --data_uid sft_56 \
 --data_name long_examples_en_test \

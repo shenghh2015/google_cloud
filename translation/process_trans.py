@@ -7,8 +7,8 @@ from datetime import date
 import os
 
 # google translation flag
-GOOGLE_TRANSLATION = False
-
+# GOOGLE_TRANSLATION = False
+GOOGLE_TRANSLATION = True
 
 # translate function
 def translate_fn(data):
