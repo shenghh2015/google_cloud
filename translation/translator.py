@@ -6,12 +6,14 @@ class Translator:
                dataloader=None,
                translate_fn=None,
                save_fn=None,
-               output_path=None):
+               output_path=None,
+               save_interval=1000):
     self.dataloader = dataloader
     self.translate_fn = translate_fn
     self.save_fn = save_fn
     self.output_path = output_path
     self.outputs = None
+    self.save_interval = save_interval
 
   def translate(
       self,
@@ -21,7 +23,7 @@ class Translator:
     if self.dataloader is not None:
       for data in self.dataloader:
         results.append(self.translate_fn(data))
-        if len(results) % 100 == 0:
+        if len(results) % self.save_interval == 0:
           self.save()
     self.outputs = results
 
