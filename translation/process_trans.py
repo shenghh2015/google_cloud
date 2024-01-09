@@ -22,7 +22,10 @@ def translate_fn(data):
     translated_response = response
   data['conversations'][0]['value'] = translated_prompt
   data['conversations'][1]['value'] = translated_response
-  print('translate {}'.format(data['id']))
+  # print('translate {}'.format(data['id']))
+  if data['id'] % 1000 == 0: 
+    data_id = data['id']
+    print(f'data {data_id} translated!')
   return data
 
 
