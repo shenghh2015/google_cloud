@@ -63,6 +63,25 @@ def analyze_translation_cost(data):
   print(f"total cost: {cost}$")
   return char_count
 
+def get_start_and_end_by_cost(data, cost_thresh = 2000):
+  char_count = 0
+  prompt_count = 0
+  price = 20
+  for d in data:
+    prompt_count += 1
+    for c in d['conversations']:
+      char_count += len(c['value'])
+    char_count_in_million = round(char_count / 1e6, 4)
+    cost = round(price * char_count_in_million, 4)
+    if cost > cost_thresh: break
+  print("**************************")
+  print(f"Translation of {prompt_count} prompts costs ${cost_thresh}")
+  print(f"character count: {char_count}")
+  print(f"charcter count (Millions): {char_count_in_million}")
+  print(f"final cost: {cost}$")
+  print("**************************")
+  return char_count
+
 def analyze_data(data):
   train_num = 0
   test_num = 0
@@ -73,12 +92,16 @@ def analyze_data(data):
     turns_num.append(len(d['conversations']))
   print(f'train data: {train_num}, test data: {test_num}')
   print(f'turn statistics: mean {np.mean(turns_num)}, std {np.std(turns_num)}')
+
 def main():
   data_path = os.path.expanduser('~/data/WizardLM_evol_instruct_V2_143k.json')
   pydict_data = load_json(data_path)
 
   # analze cost
   analyze_translation_cost(pydict_data)
+  
+  # get start and end ids
+  get_start_and_end_by_cost(pydict_data, cost_thresh = 2000)
   
   # analyze train/test
   analyze_data(pydict_data)
