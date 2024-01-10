@@ -4,7 +4,7 @@ INPUT_PATH=/home/paiinlpteam/data/data.sft_60.WizardLM_evol_instruct_en.2024-01-
 python translation/process_trans.py --input_path $INPUT_PATH \
 --output_dir /home/paiinlpteam/results \
 --start_id 0 \
---end_id 43386 \
+--end_id 200 \
 --id_ref_path None \
 --data_uid sft_60_1 \
 --data_name WizardLM_evol_instruct_en \
